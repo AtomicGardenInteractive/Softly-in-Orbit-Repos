@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Inputs/Softly in Orbit.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Inputs/InputMasterControls.inputactions'
 
 using System;
 using System.Collections;
@@ -6,13 +6,13 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class @SoftlyinOrbit : IInputActionCollection, IDisposable
+public class @InputMasterControls : IInputActionCollection, IDisposable
 {
     public InputActionAsset asset { get; }
-    public @SoftlyinOrbit()
+    public @InputMasterControls()
     {
         asset = InputActionAsset.FromJson(@"{
-    ""name"": ""Softly in Orbit"",
+    ""name"": ""InputMasterControls"",
     ""maps"": [
         {
             ""name"": ""Player"",
@@ -22,6 +22,14 @@ public class @SoftlyinOrbit : IInputActionCollection, IDisposable
                     ""name"": ""Click"",
                     ""type"": ""Button"",
                     ""id"": ""67f03180-4853-4d36-81b5-aac9f09c1799"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""76c9eb87-5a71-4e34-b3f9-daea2c9678f0"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -80,6 +88,17 @@ public class @SoftlyinOrbit : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""XR"",
                     ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9b15c4db-c299-4a6b-a1b1-125436b5a982"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -658,6 +677,7 @@ public class @SoftlyinOrbit : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Click = m_Player.FindAction("Click", throwIfNotFound: true);
+        m_Player_Menu = m_Player.FindAction("Menu", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -720,11 +740,13 @@ public class @SoftlyinOrbit : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_Click;
+    private readonly InputAction m_Player_Menu;
     public struct PlayerActions
     {
-        private @SoftlyinOrbit m_Wrapper;
-        public PlayerActions(@SoftlyinOrbit wrapper) { m_Wrapper = wrapper; }
+        private @InputMasterControls m_Wrapper;
+        public PlayerActions(@InputMasterControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Click => m_Wrapper.m_Player_Click;
+        public InputAction @Menu => m_Wrapper.m_Player_Menu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -737,6 +759,9 @@ public class @SoftlyinOrbit : IInputActionCollection, IDisposable
                 @Click.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClick;
                 @Click.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClick;
                 @Click.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnClick;
+                @Menu.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
+                @Menu.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
+                @Menu.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMenu;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -744,6 +769,9 @@ public class @SoftlyinOrbit : IInputActionCollection, IDisposable
                 @Click.started += instance.OnClick;
                 @Click.performed += instance.OnClick;
                 @Click.canceled += instance.OnClick;
+                @Menu.started += instance.OnMenu;
+                @Menu.performed += instance.OnMenu;
+                @Menu.canceled += instance.OnMenu;
             }
         }
     }
@@ -764,8 +792,8 @@ public class @SoftlyinOrbit : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_TrackedDeviceOrientation;
     public struct UIActions
     {
-        private @SoftlyinOrbit m_Wrapper;
-        public UIActions(@SoftlyinOrbit wrapper) { m_Wrapper = wrapper; }
+        private @InputMasterControls m_Wrapper;
+        public UIActions(@InputMasterControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Navigate => m_Wrapper.m_UI_Navigate;
         public InputAction @Submit => m_Wrapper.m_UI_Submit;
         public InputAction @Cancel => m_Wrapper.m_UI_Cancel;
@@ -901,6 +929,7 @@ public class @SoftlyinOrbit : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnClick(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

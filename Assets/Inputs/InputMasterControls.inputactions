@@ -1,5 +1,5 @@
 {
-    "name": "Softly in Orbit",
+    "name": "InputMasterControls",
     "maps": [
         {
             "name": "Player",
@@ -9,6 +9,14 @@
                     "name": "Click",
                     "type": "Button",
                     "id": "67f03180-4853-4d36-81b5-aac9f09c1799",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Menu",
+                    "type": "Button",
+                    "id": "76c9eb87-5a71-4e34-b3f9-daea2c9678f0",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -67,6 +75,17 @@
                     "processors": "",
                     "groups": "XR",
                     "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9b15c4db-c299-4a6b-a1b1-125436b5a982",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Menu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
