@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PauseScreen : MonoBehaviour
 {
+    
     public static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;

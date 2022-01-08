@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
 {
+    //Golbal Variables
     public AudioMixer audioMixer;
 
     public TMPro.TMP_Dropdown resolutionDropdown;
