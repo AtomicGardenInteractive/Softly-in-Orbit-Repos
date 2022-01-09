@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
-    public PauseScreen pauseScreen;
+    private PauseScreen pauseScreen;
     public GameObject mouseOver;
     public GameObject mouseDown;
 
@@ -27,7 +27,8 @@ public class InteractableObject : MonoBehaviour
     {
         if
          (PauseScreen.GameIsPaused == false)
-        {   //Debug.Log("Mouse over Exit");
+        {   
+            //Debug.Log("Mouse over Exit");
             mouseOver.SetActive(false);
             mouseDown.SetActive(false);
         }

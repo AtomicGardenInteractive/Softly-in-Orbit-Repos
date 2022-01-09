@@ -21,7 +21,7 @@ public class PauseScreen : MonoBehaviour
 
     public void PauseMenu()
     {       
-        Debug.Log("ESC");
+        //Debug.Log("ESC");
         if (GameIsPaused)
         {
             Resume();

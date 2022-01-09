@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     }
     public void Click(InputAction.CallbackContext context)
     {
-        Debug.Log("Click" + context.phase);
+        //Debug.Log("Click" + context.phase);
 
         Ray myRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitInfo;
