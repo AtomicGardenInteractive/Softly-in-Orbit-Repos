@@ -1186,7 +1186,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 312031913}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0187}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 872112175}
@@ -1194,8 +1194,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0009999275}
-  m_SizeDelta: {x: 2.3847, y: -0.3777}
+  m_AnchoredPosition: {x: 0.010499954, y: 0}
+  m_SizeDelta: {x: -0.0202, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &312031915
 MonoBehaviour:
@@ -1244,7 +1244,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 2.65
+  m_fontSize: 2.2
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1356,7 +1356,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 418863286}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 603901258}
@@ -1364,8 +1364,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.89}
-  m_SizeDelta: {x: 2.3847, y: -0.3777}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &418863288
 MonoBehaviour:
@@ -1414,7 +1414,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 3.3
+  m_fontSize: 2.2
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1450,7 +1450,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 2.2538984, z: 0, w: 0}
+  m_margin: {x: 0, y: 0.0077221403, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2199,7 +2199,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 603901257}
   m_LocalRotation: {x: 0, y: -0.043619405, z: 0, w: 0.9990483}
-  m_LocalPosition: {x: 0, y: 0, z: -0.439}
+  m_LocalPosition: {x: 0, y: 0, z: -0.262}
   m_LocalScale: {x: 0.78867525, y: 0.14285713, z: 0.21132486}
   m_Children:
   - {fileID: 418863287}
@@ -2209,8 +2209,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -5, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 6.1, y: 0.523}
-  m_SizeDelta: {x: 9.6124, y: 6.34355}
+  m_AnchoredPosition: {x: 3.1298, y: 0.31877}
+  m_SizeDelta: {x: 6.475, y: 2.51931}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &603901259
 MonoBehaviour:
@@ -3360,7 +3360,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872112174}
   m_LocalRotation: {x: -0, y: -0.043619405, z: -0, w: 0.99904823}
-  m_LocalPosition: {x: 0, y: 0, z: 0.271}
+  m_LocalPosition: {x: 0, y: 0, z: -0.284}
   m_LocalScale: {x: 0.78867525, y: 0.14285712, z: 0.21132484}
   m_Children:
   - {fileID: 312031914}
@@ -3370,8 +3370,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -5, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 5.06, y: 0}
-  m_SizeDelta: {x: 9.6124, y: 6.34355}
+  m_AnchoredPosition: {x: 2.98, y: 0.142}
+  m_SizeDelta: {x: 6.2553, y: 4.97184}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &872112176
 MonoBehaviour:
@@ -3449,7 +3449,7 @@ GameObject:
   - component: {fileID: 896695413}
   m_Layer: 0
   m_Name: Door 2
-  m_TagString: Untagged
+  m_TagString: LevelTransition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3545,6 +3545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorLabel: {fileID: 312031913}
   doorButton: {fileID: 1173089516}
+  levelToLoad: Beens
 --- !u!1 &905621789
 GameObject:
   m_ObjectHideFlags: 0
@@ -4234,7 +4235,7 @@ GameObject:
   - component: {fileID: 1045787227}
   m_Layer: 0
   m_Name: Door 1
-  m_TagString: Untagged
+  m_TagString: LevelTransition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4268,6 +4269,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorLabel: {fileID: 418863286}
   doorButton: {fileID: 1260611020}
+  levelToLoad: Bones
 --- !u!65 &1045787228
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7143,6 +7145,8 @@ GameObject:
   - component: {fileID: 1696557174}
   - component: {fileID: 1696557173}
   - component: {fileID: 1696557172}
+  - component: {fileID: 1696557175}
+  - component: {fileID: 1696557176}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -7198,6 +7202,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1696557175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696557171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5523cdbcb34d342b09d1943c827bdc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1696557176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696557171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a69a0cbd1418bd4aa6b7f2c3952648c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1701839112
 GameObject:
   m_ObjectHideFlags: 0

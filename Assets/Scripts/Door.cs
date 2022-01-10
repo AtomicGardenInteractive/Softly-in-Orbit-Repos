@@ -1,25 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.SceneManagement;
 public class Door : MonoBehaviour
 {
-    private PauseScreen pauseScreen;
-
     public GameObject doorLabel;
     public GameObject doorButton;
+    public string levelToLoad;
     private static bool PlayerPresent = false;
-    
+    private static bool GameIsPaused = false;
+       
     void Start()
     {
+        GameEvents.current.onGamePause += PauseGame;
+        GameEvents.current.onGameUnpause += UnpauseGame;
+        
         doorLabel.SetActive(false);
         doorButton.SetActive(false);
+    }
+    private void OnDestroy()
+    {
+        GameEvents.current.onGamePause -= PauseGame;
+        GameEvents.current.onGameUnpause -= UnpauseGame;
+    }
+    void PauseGame()
+    {
+        GameIsPaused = true;
+    }
+    void UnpauseGame()
+    {
+        GameIsPaused = false;
     }
 
     void OnMouseEnter()
     {
         if
-        (PauseScreen.GameIsPaused == false)
+        (GameIsPaused == false)
         { 
          doorLabel.SetActive(true);        
         }
@@ -32,7 +47,6 @@ public class Door : MonoBehaviour
             doorLabel.SetActive(false);        
         }
     }
-
     void Show()
     {
         doorLabel.SetActive(true);
@@ -43,25 +57,24 @@ public class Door : MonoBehaviour
         doorLabel.SetActive(false);
         doorButton.SetActive(false);        
     }
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter(Collider collision)
     {
         PlayerPresent = true;
-        Show();
-        
+        Show();        
     }
-    void OnTriggerExit(Collider collider)
+    void OnTriggerExit(Collider collision)
     {
         PlayerPresent = false;
         Hide();
-
     }
 
     public void UseDoor() 
     {
         if
-        (PauseScreen.GameIsPaused == false)
-        {
-            Debug.Log("Door Way Activated, Load next Scene");
+        (GameIsPaused == false)
+        {            
+            GameEvents.current.LoadLevel(levelToLoad);
+            Debug.Log("Door Activated, Load next Scene");
         }
     }
 }

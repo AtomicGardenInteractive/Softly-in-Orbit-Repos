@@ -4,20 +4,35 @@ using UnityEngine;
 
 public class InteractableObject : MonoBehaviour
 {
-    private PauseScreen pauseScreen;
     public GameObject mouseOver;
     public GameObject mouseDown;
-
+    private static bool GameIsPaused;
     
     void Start()
     {
         mouseOver.SetActive(false);
         mouseDown.SetActive(false);
+
+        GameEvents.current.onGamePause += PauseGame;
+        GameEvents.current.onGameUnpause += UnpauseGame;
+    }
+    private void OnDestroy()
+    {
+        GameEvents.current.onGamePause -= PauseGame;
+        GameEvents.current.onGameUnpause -= UnpauseGame;
+    }
+    void PauseGame()
+    {
+        GameIsPaused = true;
+    }
+    void UnpauseGame()
+    {
+        GameIsPaused = false;
     }
     void OnMouseEnter()
     {
         if
-        (PauseScreen.GameIsPaused == false) 
+        (GameIsPaused == false) 
         { 
             //Debug.Log("Mouse Over Active");
             mouseOver.SetActive(true); 
@@ -26,7 +41,7 @@ public class InteractableObject : MonoBehaviour
     void OnMouseExit()
     {
         if
-         (PauseScreen.GameIsPaused == false)
+         (GameIsPaused == false)
         {   
             //Debug.Log("Mouse over Exit");
             mouseOver.SetActive(false);
@@ -36,7 +51,7 @@ public class InteractableObject : MonoBehaviour
     private void OnMouseDown()
     {
         if
-        (PauseScreen.GameIsPaused == false)
+        (GameIsPaused == false)
         {
             mouseOver.SetActive(false);
             mouseDown.SetActive(true);

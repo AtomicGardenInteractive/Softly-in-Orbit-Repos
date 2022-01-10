@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PauseScreen : MonoBehaviour
 {
     
-    public static bool GameIsPaused = false;
+    private static bool GameIsPaused = false;
 
     public GameObject pauseMenuUI;
     public GameObject OptionsMenuUI;
@@ -38,6 +38,7 @@ public class PauseScreen : MonoBehaviour
         OptionsMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
+        GameEvents.current.UnPauseGame();
     }
 
     void Pause()
@@ -45,6 +46,7 @@ public class PauseScreen : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
+        GameEvents.current.PauseGame();
     }
 
     private void OnEnable()

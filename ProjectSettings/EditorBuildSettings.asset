@@ -11,5 +11,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Screen Template/Screen Template.unity
     guid: ef8acffa13243334abf218f6b5c67690
+  - enabled: 1
+    path: Assets/Scenes/Test Scene/Test.unity
+    guid: 641cd39d82aef5b419273e6f9ffcd9af
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 363ac2af518378441a0d4606351a33fd, type: 2}
