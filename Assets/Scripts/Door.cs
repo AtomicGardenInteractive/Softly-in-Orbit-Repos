@@ -10,7 +10,10 @@ public class Door : MonoBehaviour
     private static bool GameIsPaused = false;
        
     void Start()
-    {
+    {c
+        GetComponentInChildren<Button>().onClick.RemoveAllListeners();
+        GetComponentInChildren<Button>().onClick.AddListener(UseDoor);
+        
         GameEvents.current.onGamePause += PauseGame;
         GameEvents.current.onGameUnpause += UnpauseGame;
         
