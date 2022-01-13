@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 public class Door : MonoBehaviour
 {
     public GameObject doorLabel;
@@ -8,9 +9,14 @@ public class Door : MonoBehaviour
     public string levelToLoad;
     private static bool PlayerPresent = false;
     private static bool GameIsPaused = false;
-       
+    [SerializeField]
+    private bool doorLocked;
+    [SerializeField] 
+    private Key.KeyType keyType;
+    
+
     void Start()
-    {c
+    {
         GetComponentInChildren<Button>().onClick.RemoveAllListeners();
         GetComponentInChildren<Button>().onClick.AddListener(UseDoor);
         
@@ -74,10 +80,19 @@ public class Door : MonoBehaviour
     public void UseDoor() 
     {
         if
-        (GameIsPaused == false)
-        {            
-            GameEvents.current.LoadLevel(levelToLoad);
-            Debug.Log("Door Activated, Load next Scene");
+        (!GameIsPaused)
+        {
+            if (!doorLocked)
+            {
+                GameEvents.current.LoadLevel(levelToLoad);
+                Debug.Log("Door Activated, Load next Scene");
+            }
+            else 
+            {
+                GameEvents.current.KeyDoor(keyType);
+                Debug.Log(keyType);
+            }
+
         }
     }
 }

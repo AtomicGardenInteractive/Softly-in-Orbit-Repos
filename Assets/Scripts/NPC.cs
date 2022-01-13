@@ -4,17 +4,51 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject mouseOver;    
+    private static bool GameIsPaused = false;
+    public Dialogue dialogue;
+
     void Start()
     {
-        
-    }
+        mouseOver.SetActive(false);       
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameEvents.current.onGamePause += PauseGame;
+        GameEvents.current.onGameUnpause += UnpauseGame;        
     }
-    
-    
+    private void OnDestroy()
+    {
+        GameEvents.current.onGamePause -= PauseGame;
+        GameEvents.current.onGameUnpause -= UnpauseGame;
+    }
+    void PauseGame()
+    {
+        GameIsPaused = true;
+    }
+    void UnpauseGame()
+    {
+        GameIsPaused = false;
+    }
+    void OnMouseEnter()
+    {
+        if
+        (!GameIsPaused)
+        {
+            //Debug.Log("Mouse Over Active");
+            mouseOver.SetActive(true);
+        }
+    }
+    void OnMouseExit()
+    {
+        //Debug.Log("Mouse over Exit");
+        mouseOver.SetActive(false);
+    }
+    private void OnMouseDown()
+    {
+        TriggerDialogue();
+    }   
+
+    public void TriggerDialogue()
+    {
+        GameEvents.current.TriggerDialogue(dialogue);
+    }
 }

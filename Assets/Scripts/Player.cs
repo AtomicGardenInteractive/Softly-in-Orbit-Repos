@@ -10,20 +10,35 @@ public class Player : MonoBehaviour
     public LayerMask ground;
 
     private NavMeshAgent myAgent;
+
+    private static bool GameIsPaused = false;
     private void Start()
     {
         myAgent = GetComponent<NavMeshAgent>();
+
+        GameEvents.current.onGamePause += PauseGame;
+        GameEvents.current.onGameUnpause += UnpauseGame;
+    }
+    void PauseGame()
+    {
+        GameIsPaused = true;
+    }
+    void UnpauseGame()
+    {
+        GameIsPaused = false;
     }
     public void Click(InputAction.CallbackContext context)
     {
         //Debug.Log("Click" + context.phase);
-
-        Ray myRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hitInfo;
-
-        if (Physics.Raycast(myRay, out hitInfo, 100, ground))
+        if (!GameIsPaused)
         {
-            myAgent.SetDestination(hitInfo.point);
+            Ray myRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitInfo;
+
+            if (Physics.Raycast(myRay, out hitInfo, 100, ground))
+            {
+                myAgent.SetDestination(hitInfo.point);
+            }
         }
     }
     

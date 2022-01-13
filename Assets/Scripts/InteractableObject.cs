@@ -6,7 +6,7 @@ public class InteractableObject : MonoBehaviour
 {
     public GameObject mouseOver;
     public GameObject mouseDown;
-    private static bool GameIsPaused;
+    private static bool GameIsPaused = false;
     
     void Start()
     {
@@ -32,7 +32,7 @@ public class InteractableObject : MonoBehaviour
     void OnMouseEnter()
     {
         if
-        (GameIsPaused == false) 
+        (!GameIsPaused) 
         { 
             //Debug.Log("Mouse Over Active");
             mouseOver.SetActive(true); 
@@ -40,18 +40,16 @@ public class InteractableObject : MonoBehaviour
     }
     void OnMouseExit()
     {
-        if
-         (GameIsPaused == false)
-        {   
-            //Debug.Log("Mouse over Exit");
-            mouseOver.SetActive(false);
-            mouseDown.SetActive(false);
-        }
+          
+        //Debug.Log("Mouse over Exit");
+        mouseOver.SetActive(false);
+        mouseDown.SetActive(false);
+        
     }
     private void OnMouseDown()
     {
         if
-        (GameIsPaused == false)
+        (!GameIsPaused)
         {
             mouseOver.SetActive(false);
             mouseDown.SetActive(true);

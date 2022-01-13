@@ -37,4 +37,28 @@ public class GameEvents : MonoBehaviour
             onLoadLevel(levelToLoad);
         }
     }
+    public event Action<Dialogue> onTriggerDialogue;
+    public void TriggerDialogue(Dialogue dialogue)
+    {
+        if (onTriggerDialogue != null)
+        {
+            onTriggerDialogue(dialogue);
+        }
+    }
+    public event Action<Key.KeyType> onGetKey;
+    public void GetKey(Key.KeyType keyType)
+    {
+        if (onGetKey != null)
+        {
+            onGetKey(keyType);
+        }
+    }
+    public event Action<Key.KeyType> onKeyDoor;
+    public void KeyDoor(Key.KeyType keyType)
+    {
+        if (onKeyDoor != null)
+        {
+            onKeyDoor(keyType);
+        }
+    }
 }
