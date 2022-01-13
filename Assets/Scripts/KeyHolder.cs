@@ -25,7 +25,8 @@ public class KeyHolder : MonoBehaviour
     }
     public void KeyDoor(Key.KeyType keyType) 
     {
-        if (ContainsKey(KeyDoor.GetKeyType())) 
+        //Get Help
+        //if (ContainsKey(KeyDoor.GetKeyType())) 
         { 
             
         }

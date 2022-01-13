@@ -61,19 +61,17 @@ public class DialogueManager : MonoBehaviour
     }
     public void DisplayNextSentence()
     {
-        if (!GameIsPaused)
+        if (sentences.Count == 0)
         {
-            if (sentences.Count == 0)
-            {
-                continueButton.SetActive(false);
-                endButton.SetActive(true);
-                Debug.Log("End of Conversation");
-                return;
-            }
-            string sentance = sentences.Dequeue();
-            StopAllCoroutines();
-            StartCoroutine(TypeSentence(sentance));
+             continueButton.SetActive(false);
+             endButton.SetActive(true);
+             Debug.Log("End of Conversation");
+             return;
         }
+        string sentance = sentences.Dequeue();
+        StopAllCoroutines();
+        StartCoroutine(TypeSentence(sentance));
+        
     }
     IEnumerator TypeSentence(string sentence) 
     {
@@ -85,13 +83,11 @@ public class DialogueManager : MonoBehaviour
         }
     }
     public void EndDialogue()
-    {
-        if (!GameIsPaused)
-        {            
-            endButton.SetActive(false);
-            sentences.Clear();
-            animator.SetBool("IsOpen", false);            
-        }
+    {        
+        endButton.SetActive(false);
+        sentences.Clear();
+        animator.SetBool("IsOpen", false);            
+        
     }    
     
 }
