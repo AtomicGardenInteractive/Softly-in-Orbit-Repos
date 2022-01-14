@@ -34,7 +34,6 @@ public class PauseScreen : MonoBehaviour
     }
     void Resume()
     {
-        GameEvents.current.UIClosed();
         pauseMenuUI.SetActive(false);
         OptionsMenuUI.SetActive(false);
         Time.timeScale = 1f;
@@ -44,7 +43,6 @@ public class PauseScreen : MonoBehaviour
 
     void Pause()
     {
-        GameEvents.current.UIOpen();
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;

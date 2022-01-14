@@ -22,8 +22,7 @@ public class Door : MonoBehaviour
         
         GameEvents.current.onGamePause += PauseGame;
         GameEvents.current.onGameUnpause += UnpauseGame;
-        GameEvents.current.onOpenDoor += OpenDoor;
-        GameEvents.current.onLockedDoor += LockedDoor;
+        
         doorLabel.SetActive(false);
         doorButton.SetActive(false);
     }
@@ -83,26 +82,17 @@ public class Door : MonoBehaviour
         if
         (!GameIsPaused)
         {
-            if (doorLocked)
-            {
-                GameEvents.current.KeyDoor(keyType);
-                //Debug.Log(keyType);
-            }
-            else 
+            if (!doorLocked)
             {
                 GameEvents.current.LoadLevel(levelToLoad);
                 Debug.Log("Door Activated, Load next Scene");
             }
+            else 
+            {
+                GameEvents.current.KeyDoor(keyType);
+                Debug.Log(keyType);
+            }
 
         }
-    }
-    public void OpenDoor() 
-    {
-        GameEvents.current.LoadLevel(levelToLoad);
-        Debug.Log("Door Activated, Load next Scene");
-    }
-    public void LockedDoor()
-    {
-        
     }
 }

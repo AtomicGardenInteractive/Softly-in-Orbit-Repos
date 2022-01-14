@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
-    public GameObject mouseEnter;    
+    public GameObject mouseOver;    
     private static bool GameIsPaused = false;
     public Dialogue dialogue;
 
     void Start()
     {
-        mouseEnter.SetActive(false);
+        mouseOver.SetActive(false);       
+
         GameEvents.current.onGamePause += PauseGame;
         GameEvents.current.onGameUnpause += UnpauseGame;        
     }
@@ -33,13 +34,13 @@ public class NPC : MonoBehaviour
         (!GameIsPaused)
         {
             //Debug.Log("Mouse Over Active");
-            mouseEnter.SetActive(true);
+            mouseOver.SetActive(true);
         }
     }
     void OnMouseExit()
     {
         //Debug.Log("Mouse over Exit");
-        mouseEnter.SetActive(false);
+        mouseOver.SetActive(false);
     }
     private void OnMouseDown()
     {
