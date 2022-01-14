@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class KeyHolder : MonoBehaviour
 {
+    [SerializeField]    
     private List<Key.KeyType> keyList;    
     private void Awake()
     {
@@ -26,7 +27,10 @@ public class KeyHolder : MonoBehaviour
     public void KeyDoor(Key.KeyType keyType) 
     {
         //Get Help
+        // KeyScript here
+        // Stop Player Moving when clicking on UI
         //if (ContainsKey(KeyDoor.GetKeyType())) 
+        // for each ( var keytype in keylist)
         { 
             
         }
