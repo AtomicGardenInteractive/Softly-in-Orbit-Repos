@@ -7,11 +7,11 @@ public class DialogueManager : MonoBehaviour
 {
     private Queue<string> sentences;
     public GameObject dialogueWindow;
-    public GameObject continueButton;
-    public GameObject endButton;
+    public GameObject continueButton;   
     public TMPro.TMP_Text nameText;
     public TMPro.TMP_Text dialogueText;
     private static bool GameIsPaused;
+    private static bool UIOpen = false;
     public Animator animator;
     private float timeDelay = 0.075f;
 
@@ -33,39 +33,40 @@ public class DialogueManager : MonoBehaviour
     private void Update()
     {
         if (GameIsPaused) 
-        {
-            endButton.SetActive(false);
+        {            
             sentences.Clear();
             dialogueWindow.SetActive(false);
         }        
     }
     public void StartDialogue(Dialogue dialogue)
     {
-        if (!GameIsPaused)
-        {   
-            dialogueWindow.SetActive(true);
-            continueButton.SetActive(true);
-            endButton.SetActive(false);
-            animator.SetBool("IsOpen", true);            
-            nameText.text = dialogue.name;
-            Debug.Log("Starting Coversation with" + dialogue.name);
-
-            sentences.Clear();
-
-            foreach (string sentence in dialogue.sentences)
+        if (!UIOpen)
+        {
+            if (!GameIsPaused)
             {
-                sentences.Enqueue(sentence);
+                GameEvents.current.UIOpen();
+                UIOpen = true;
+                dialogueWindow.SetActive(true);
+                continueButton.SetActive(true);
+                animator.SetBool("IsOpen", true);
+                nameText.text = dialogue.name;
+                Debug.Log("Starting Coversation with" + dialogue.name);
+
+                sentences.Clear();
+
+                foreach (string sentence in dialogue.sentences)
+                {
+                    sentences.Enqueue(sentence);
+                }
+                DisplayNextSentence();
             }
-            DisplayNextSentence();
         }
     }
     public void DisplayNextSentence()
     {
         if (sentences.Count == 0)
         {
-             continueButton.SetActive(false);
-             endButton.SetActive(true);
-             Debug.Log("End of Conversation");
+            EndDialogue();
              return;
         }
         string sentance = sentences.Dequeue();
@@ -83,8 +84,9 @@ public class DialogueManager : MonoBehaviour
         }
     }
     public void EndDialogue()
-    {        
-        endButton.SetActive(false);
+    {
+        GameEvents.current.UIClosed();
+        UIOpen = false;
         sentences.Clear();
         animator.SetBool("IsOpen", false);            
         

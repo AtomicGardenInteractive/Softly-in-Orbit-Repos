@@ -12,12 +12,15 @@ public class Player : MonoBehaviour
     private NavMeshAgent myAgent;
 
     private static bool GameIsPaused = false;
+    private static bool UIActive = false;
     private void Start()
     {
         myAgent = GetComponent<NavMeshAgent>();
 
         GameEvents.current.onGamePause += PauseGame;
         GameEvents.current.onGameUnpause += UnpauseGame;
+        GameEvents.current.onUIOpen += UIOpen;
+        GameEvents.current.onUIClosed += UIClosed;
     }
     void PauseGame()
     {
@@ -27,19 +30,31 @@ public class Player : MonoBehaviour
     {
         GameIsPaused = false;
     }
+    void UIOpen() 
+    { 
+        UIActive = true; 
+    }
+    void UIClosed()
+    {
+        UIActive = false;
+    }
     public void Click(InputAction.CallbackContext context)
     {
         //Debug.Log("Click" + context.phase);
         if (!GameIsPaused)
         {
-            Ray myRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hitInfo;
-
-            if (Physics.Raycast(myRay, out hitInfo, 100, ground))
+            if (!UIActive)
             {
-                myAgent.SetDestination(hitInfo.point);
+                Ray myRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+                RaycastHit hitInfo;
+
+
+                if (Physics.Raycast(myRay, out hitInfo, 100, ground))
+                {
+                    myAgent.SetDestination(hitInfo.point);
+                }
             }
-        }
+        }   
     }
     
 }
