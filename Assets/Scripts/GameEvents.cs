@@ -27,16 +27,7 @@ public class GameEvents : MonoBehaviour
         {
             onGameUnpause();
         }
-    }
-
-    public event Action<string> onLoadLevel;
-    public void LoadLevel(string levelToLoad)
-    {
-        if (onLoadLevel != null)
-        {
-            onLoadLevel(levelToLoad);
-        }
-    }
+    }    
     public event Action<Dialogue> onTriggerDialogue;
     public void TriggerDialogue(Dialogue dialogue)
     {
@@ -59,6 +50,38 @@ public class GameEvents : MonoBehaviour
         if (onKeyDoor != null)
         {
             onKeyDoor(keyType);
+        }
+    }
+    public event Action onOpenDoor;
+    public void OpenDoor() 
+    {
+        if (onOpenDoor != null)
+        {
+            onOpenDoor();
+        }
+    }
+    public event Action onUIOpen;
+    public void UIOpen()
+    {
+        if (onUIOpen != null)
+        {
+            onUIOpen();
+        }
+    }
+    public event Action onUIClosed;
+    public void UIClosed()
+    {
+        if (onUIClosed != null)
+        {
+            onUIClosed();
+        }
+    }
+    public event Action<Key.KeyType> onIventKeyCheck;
+    public void IventKeyCheck(Key.KeyType keyType)
+    {
+        if (onIventKeyCheck != null)
+        {
+            onIventKeyCheck(keyType);
         }
     }
 }

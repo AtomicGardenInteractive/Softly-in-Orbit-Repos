@@ -7,8 +7,7 @@ public class DialogueManager : MonoBehaviour
 {
     private Queue<string> sentences;
     public GameObject dialogueWindow;
-    public GameObject continueButton;
-    public GameObject endButton;
+    public GameObject continueButton;    
     public TMPro.TMP_Text nameText;
     public TMPro.TMP_Text dialogueText;
     private static bool GameIsPaused;
@@ -33,8 +32,7 @@ public class DialogueManager : MonoBehaviour
     private void Update()
     {
         if (GameIsPaused) 
-        {
-            endButton.SetActive(false);
+        {           
             sentences.Clear();
             dialogueWindow.SetActive(false);
         }        
@@ -42,10 +40,10 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         if (!GameIsPaused)
-        {   
+        {
+            GameEvents.current.UIOpen();
             dialogueWindow.SetActive(true);
-            continueButton.SetActive(true);
-            endButton.SetActive(false);
+            continueButton.SetActive(true);            
             animator.SetBool("IsOpen", true);            
             nameText.text = dialogue.name;
             Debug.Log("Starting Coversation with" + dialogue.name);
@@ -63,8 +61,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (sentences.Count == 0)
         {
-             continueButton.SetActive(false);
-             endButton.SetActive(true);
+            EndDialogue();            
              Debug.Log("End of Conversation");
              return;
         }
@@ -83,11 +80,10 @@ public class DialogueManager : MonoBehaviour
         }
     }
     public void EndDialogue()
-    {        
-        endButton.SetActive(false);
+    {
+        GameEvents.current.UIClosed();
         sentences.Clear();
-        animator.SetBool("IsOpen", false);            
-        
+        animator.SetBool("IsOpen", false);        
     }    
     
 }

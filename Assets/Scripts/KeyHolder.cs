@@ -14,6 +14,7 @@ public class KeyHolder : MonoBehaviour
     private void Start()
     {
         GameEvents.current.onGetKey += AddKey;
+        GameEvents.current.onKeyDoor += KeyDoor;
     }
     public void AddKey(Key.KeyType keyType)
     {
@@ -26,13 +27,13 @@ public class KeyHolder : MonoBehaviour
     }
     public void KeyDoor(Key.KeyType keyType) 
     {
-        //Get Help
-        // KeyScript here
-        // Stop Player Moving when clicking on UI
-        //if (ContainsKey(KeyDoor.GetKeyType())) 
-        // for each ( var keytype in keylist)
-        { 
-            
+        if (ContainsKey(keyType))
+        {
+            GameEvents.current.OpenDoor();
+        }
+        else
+        {
+            Debug.Log("Door locked");
         }
     } 
 }

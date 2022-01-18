@@ -5,24 +5,25 @@ using UnityEngine.UI;
 public class Door : MonoBehaviour
 {
     public GameObject doorLabel;
-    public GameObject doorButton;
-    public string levelToLoad;
+    public GameObject doorButton;    
     private static bool PlayerPresent = false;
     private static bool GameIsPaused = false;
     [SerializeField]
     private bool doorLocked;
     [SerializeField] 
     private Key.KeyType keyType;
-    
+
+    public Transform teleportTarget;
+    public GameObject player;
 
     void Start()
     {
         GetComponentInChildren<Button>().onClick.RemoveAllListeners();
         GetComponentInChildren<Button>().onClick.AddListener(UseDoor);
-        
+
         GameEvents.current.onGamePause += PauseGame;
         GameEvents.current.onGameUnpause += UnpauseGame;
-        
+        GameEvents.current.onOpenDoor += OpenDoor;
         doorLabel.SetActive(false);
         doorButton.SetActive(false);
     }
@@ -30,6 +31,7 @@ public class Door : MonoBehaviour
     {
         GameEvents.current.onGamePause -= PauseGame;
         GameEvents.current.onGameUnpause -= UnpauseGame;
+        GameEvents.current.onOpenDoor -= OpenDoor;
     }
     void PauseGame()
     {
@@ -84,8 +86,8 @@ public class Door : MonoBehaviour
         {
             if (!doorLocked)
             {
-                GameEvents.current.LoadLevel(levelToLoad);
-                Debug.Log("Door Activated, Load next Scene");
+                Debug.Log("Door Not Locked");
+                OpenDoor();
             }
             else 
             {
@@ -95,4 +97,9 @@ public class Door : MonoBehaviour
 
         }
     }
+    public void OpenDoor() 
+    {
+        gameObject.SetActive(false);
+
+    }    
 }
