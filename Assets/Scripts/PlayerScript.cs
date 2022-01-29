@@ -33,25 +33,13 @@ public class PlayerScript : MonoBehaviour
     {
         myAgent = GetComponent<NavMeshAgent>();
         playerAnimator = GetComponent<Animator>();
-
+        //Tracks whether the game is paused or if their is dialogue open. 
         GameEvents.current.onGamePause += PauseGame;
         GameEvents.current.onGameUnpause += UnpauseGame;
         GameEvents.current.onUIOpen += UIOpen;
         GameEvents.current.onUIClosed += UIClosed;
         
-    }
-
-    private void Update()
-    {        
-        //if (playerAnimator.velocity != Vector3.zero)
-        //{
-        //    playerAnimator.SetBool("isWalking", true);
-        //}
-        //else
-        //{
-        //    playerAnimator.SetBool("isWalking", false);
-        //}
-    }
+    }    
     void PauseGame()
     {
         GameIsPaused = true;

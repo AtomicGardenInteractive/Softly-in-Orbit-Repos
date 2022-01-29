@@ -10,7 +10,7 @@ public class NPC : MonoBehaviour
 
     void Start()
     {
-        mouseOver.SetActive(false);       
+        mouseOver.SetActive(false);
 
         GameEvents.current.onGamePause += PauseGame;
         GameEvents.current.onGameUnpause += UnpauseGame;        

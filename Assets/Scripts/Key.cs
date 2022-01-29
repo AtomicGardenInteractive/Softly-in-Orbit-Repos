@@ -21,7 +21,6 @@ public class Key : MonoBehaviour
     {
         if (!GameIsPaused)
         {
-            Debug.Log("Oi Not so 'ard yeah!?");
             GameEvents.current.GetKey(keyType);
             Destroy(this.gameObject);
         }

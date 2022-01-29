@@ -16,15 +16,18 @@ public class KeyHolder : MonoBehaviour
         GameEvents.current.onGetKey += AddKey;
         GameEvents.current.onKeyDoor += KeyDoor;
     }
+    //adds key to the list
     public void AddKey(Key.KeyType keyType)
     {
         Debug.Log("Added Key:" + keyType);
         keyList.Add(keyType);
-    }    
+    }
+    //Checks if the passed keytype is present in the list then returns
     public bool ContainsKey(Key.KeyType keyType) 
     {        
         return keyList.Contains(keyType);
     }
+    //if the containskey returns then sends to open the door if not then sends the doorlocked which unsubbs the door from listening for open
     public void KeyDoor(Key.KeyType keyType) 
     {
         if (ContainsKey(keyType))
@@ -33,6 +36,7 @@ public class KeyHolder : MonoBehaviour
         }
         else
         {
+            GameEvents.current.DoorLocked();
             Debug.Log("Door locked");
         }
     } 

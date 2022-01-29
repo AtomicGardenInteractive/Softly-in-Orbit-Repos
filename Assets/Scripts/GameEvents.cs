@@ -11,7 +11,7 @@ public class GameEvents : MonoBehaviour
     {
         current = this;
     }
-
+    //All the events that can be called or listend to by other scripts    
     public event Action onGamePause;
     public void PauseGame()
     {
@@ -82,6 +82,14 @@ public class GameEvents : MonoBehaviour
         if (onIventKeyCheck != null)
         {
             onIventKeyCheck(keyType);
+        }
+    }
+    public event Action onDoorLocked;
+    public void DoorLocked()
+    {
+        if (onDoorLocked != null)
+        {
+            onDoorLocked();
         }
     }
 }

@@ -12,18 +12,16 @@ public class Door : MonoBehaviour
     private bool doorLocked;
     [SerializeField] 
     private Key.KeyType keyType;
-
-    public Transform teleportTarget;
-    public GameObject player;
-
     void Start()
     {
+        //gets the button
         GetComponentInChildren<Button>().onClick.RemoveAllListeners();
         GetComponentInChildren<Button>().onClick.AddListener(UseDoor);
 
         GameEvents.current.onGamePause += PauseGame;
         GameEvents.current.onGameUnpause += UnpauseGame;
-        GameEvents.current.onOpenDoor += OpenDoor;
+        GameEvents.current.onDoorLocked += DoorLocked;
+        
         doorLabel.SetActive(false);
         doorButton.SetActive(false);
     }
@@ -31,7 +29,7 @@ public class Door : MonoBehaviour
     {
         GameEvents.current.onGamePause -= PauseGame;
         GameEvents.current.onGameUnpause -= UnpauseGame;
-        GameEvents.current.onOpenDoor -= OpenDoor;
+        GameEvents.current.onDoorLocked -= DoorLocked;
     }
     void PauseGame()
     {
@@ -87,19 +85,30 @@ public class Door : MonoBehaviour
             if (!doorLocked)
             {
                 Debug.Log("Door Not Locked");
-                OpenDoor();
+                OpenDoorUnlocked();
             }
             else 
             {
+                GameEvents.current.onOpenDoor += OpenDoor;
                 GameEvents.current.KeyDoor(keyType);
                 Debug.Log(keyType);
             }
 
         }
     }
+    
     public void OpenDoor() 
     {
+        GameEvents.current.onOpenDoor -= OpenDoor;
         gameObject.SetActive(false);
-
+        
+    }
+    void DoorLocked() 
+    {
+        GameEvents.current.onOpenDoor -= OpenDoor;
+    }
+    void OpenDoorUnlocked() 
+    { 
+        gameObject.SetActive(false); 
     }    
 }
